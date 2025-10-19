@@ -1,0 +1,195 @@
+﻿<UserControl x:Class="DBracket.Cli.WPF.Plugins.ProjectManagement.ProjectManagementView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DBracket.Cli.WPF.Plugins.ProjectManagement"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Project Management"
+                   FontWeight="Thin"
+                   Margin="8,0,0,0"
+                   FontSize="24" />
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Search"
+                       VerticalAlignment="Center"
+                       Margin="4,0,4,0" />
+            <TextBox x:Name="SearchBox"
+                     Grid.Column="1"
+                     FontSize="16"
+                     Text="{Binding SearchText}" />
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ListBox ItemsSource="{Binding Projects}"
+                     SelectedItem="{Binding SelectedProject, Mode=TwoWay}"
+                     Grid.Row="1"
+                     Background="LightGray">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="{Binding Title}"
+                                       Foreground="Black"
+                                       FontSize="16" />
+                            <TextBlock Text="{Binding Description}"
+                                       Grid.Row="1"
+                                       Foreground="Black"
+                                       FontSize="12" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+                <ListBox.Resources>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Background"
+                                Value="WhiteSmoke" />
+                    </Style>
+                </ListBox.Resources>
+            </ListBox>
+
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock FontSize="20"
+                           FontWeight="Thin"
+                           Margin="0,0,0,0">
+                    <Run Text="Project:" />
+                    <Run Text="{Binding SelectedProject.Title}" />
+                </TextBlock>
+
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal"
+                                Grid.Row="0">
+                        <TextBlock Text="Title" />
+                        <TextBox Text="{Binding SelectedProject.Title, Mode=TwoWay}" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal"
+                                Grid.Row="1">
+                        <TextBlock Text="Description" />
+                        <TextBox Text="{Binding SelectedProject.Description, Mode=TwoWay}" />
+                    </StackPanel>
+                </Grid>
+
+
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <ListBox ItemsSource="{Binding SelectedProject.Tasks}"
+                             SelectedItem="{Binding SelectedTask, Mode=TwoWay}"
+                             Background="LightGray">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="{Binding Title}"
+                                               Foreground="Black"
+                                               FontSize="16" />
+                                    <TextBlock Text="{Binding Description}"
+                                               Grid.Row="1"
+                                               Foreground="Black"
+                                               FontSize="12" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+
+                        <ListBox.Resources>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Background"
+                                        Value="WhiteSmoke" />
+                            </Style>
+                        </ListBox.Resources>
+                    </ListBox>
+
+                    <Grid Grid.Column="2"
+                          Background="LightYellow">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock FontSize="20"
+                                   FontWeight="Thin"
+                                   Margin="0,0,0,0">
+                            <Run Text="Task:" />
+                            <Run Text="{Binding SelectedTask.Title}" />
+                        </TextBlock>
+
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Orientation="Horizontal"
+                                        Grid.Row="0">
+                                <TextBlock Text="Title" />
+                                <TextBox Text="{Binding SelectedTask.Title, Mode=TwoWay}" />
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal"
+                                        Grid.Row="1">
+                                <TextBlock Text="Description" />
+                                <TextBox Text="{Binding SelectedTask.Description, Mode=TwoWay}" />
+                            </StackPanel>
+                        </Grid>
+
+
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+
+
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

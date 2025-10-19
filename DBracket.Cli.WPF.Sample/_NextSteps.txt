@@ -1,0 +1,16 @@
+﻿ToDo:
+
+Stupid Stuff:
+- NotifyViewModel -> Shortcuts should be configurable
+- In Cli.WPF, check if you can make anything generic an move it to Cli.common
+    - Improve the structure of the code
+    - Test it with different Scenarios in the Mainwindow
+    - Can I implement the AutoComplete on a TextBox that is not located in a CliWindow? Do I want this to work (yes)?
+- Is there a way to automatically add the Cli.Styles into the Resources of the application
+    - Yes, if it is available as a string, I can create a resource dictionary from a string at runtime. Do I really want to do this?
+
+Actual Work:
+- Rework the Autocomplete system, so that it doesn't only work with commands, but just plain text
+- Implement the command system in cli.common.commands
+    - Create an example on how to implement the command system, in the autocomplete system
+

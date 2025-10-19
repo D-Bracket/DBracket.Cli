@@ -1,0 +1,23 @@
+﻿Initial Goals for this application
+
+Create a CLI that has the following functions:
+- Text Input
+- Autocomplete for Input
+- Text Output
+- Create the CLI independent as nuget
+
+- Create a library for the CLI that allows the execution of commands
+
+- Create a library of standard commands
+
+Commands:
+- Create Workspaces 
+	- A workspace is a collection of applications and files, that are all opened, when the workspace is opened
+	- The workspace safes the layout of the opened applications and reorders them, when it is opened
+- File search
+	- Organize the files in a database and search here for files
+- Folder/File Events
+	- A system that let's the user specate a folder or a file and execute programs, when an event is triggered
+- Manage shortcuts
+	- The user can create global or application specific shortcuts
+- Tiling Window Manager
