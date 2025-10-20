@@ -184,8 +184,39 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
 
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
 
+                                <TextBlock Text="Notes" />
 
+                                <!--SelectedItem="{Binding SelectedTask, Mode=TwoWay}"-->
+                                <ListBox ItemsSource="{Binding SelectedTask.Notes}"
+                                         Background="LightGray">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Margin="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+                                                <TextBlock Text="{Binding Description}"
+                                                           Grid.Row="1"
+                                                           Foreground="Black"
+                                                           FontSize="12" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+
+                                    <ListBox.Resources>
+                                        <Style TargetType="ListBoxItem">
+                                            <Setter Property="Background"
+                                                    Value="WhiteSmoke" />
+                                        </Style>
+                                    </ListBox.Resources>
+                                </ListBox>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
